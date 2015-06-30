@@ -9,7 +9,7 @@ fin.desktop.main(function() {
         wnds.forEach(function(win) {
             win.show();
         });
-        if (WNDS_CREATED + 20 <= TOTAL_WND) {
+        if (WNDS_CREATED + 20 <= TOTAL_WND - 20) {
             fin.desktop.System
                 .launchExternalProcess(
                     RUNTIME_PATH, 
