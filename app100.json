@@ -3,7 +3,7 @@
     "startup_app": {
         "name": "OpenfinPOC",
         "description": "OpenFin POC",
-        "url": "http://local:8080/ladder-app.html?n=0",
+        "url": "http://local:8080/ladder-app.html?n=100",
         "__url": "http://cdn.openfin.co/demos/alpha-mask/",
         "uuid": "o",
         "autoShow": true,
@@ -17,7 +17,7 @@
         "installerUrl": "https://dl.openfin.co/services/download?fileName=alpha-mask-poc&config=http://cdn.openfin.co/demos/alpha-mask/app.json"
     },
     "runtime": {
-        "arguments": "--v=1 -disable-legacy-window  --security-realm=first",
+        "arguments": "--v=1 -disable-legacy-window  --security-realm=realm0",
         "__version": "4.40.3.19",
         "version": "4.40.3.21"
     },

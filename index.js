@@ -1,8 +1,8 @@
 var targetedElement, startingTrans, x, y, grid,
     OFFSET_X = 160,
     OFFSET_Y = 210,
-    COLUMNS = 25,
-    NUM_LADDERS = 200,
+    APPS_PER_INSTANCE = 25,
+    NUM_LADDERS = 5,
     lnfOverrides = genLnfOverrides();
 
 /**
@@ -14,33 +14,60 @@ var targetedElement, startingTrans, x, y, grid,
 document.querySelector('#mk-wind')
     .addEventListener('click', function(e) {
 
-        var tmpLadder,
-            ladder = document.querySelector('.ladder'),
-            frag = document.createDocumentFragment(),
-            i = 0,
-            runningOffsetX = 0,
-            runningOffsetY = 0;
+        // var tmpLadder,
+        //     childWnds = [],
+        //     i = 0,
+        //     runningOffsetX = 0,
+        //     runningOffsetY = 0;
 
-        for (; i < NUM_LADDERS; i++) {
-            tmpLadder = ladder.cloneNode(true);
+        // for (; i < NUM_LADDERS; i++) {
+            
+        //     childWnds.push(new fin.desktop.Window({
+        //         name: '' + Math.random(),
+        //         url: 'ladder.html',
+        //         autoShow: false
+        //     },function(allGood){
+        //         console.log('ALL GOOD', allGood);
+        //     },function(err){
+        //         console.log('FAIL:', err);
+        //     }));
 
-            tmpLadder.querySelector('fin-hypergrid').addGlobalProperties(lnfOverrides)
-            tmpLadder.querySelector('fin-hypergrid-behavior-json').setData(generateRandomData());
+        //     runningOffsetX = (i && !(i % APPS_PER_INSTANCE)) ? 0 : runningOffsetX + OFFSET_X;
+        //     runningOffsetY += (i && !(i % APPS_PER_INSTANCE)) ? OFFSET_Y : 0;
 
-            tmpLadder.querySelector('.ladder-num').innerHTML = 'Ladder: ' + i;
+            
+        // }
 
-            tmpLadder.style.left = runningOffsetX;
-            tmpLadder.style.top = runningOffsetY;
-            tmpLadder.style.display = 'block';
+        loadWinds(5, function(arr){
+            console.log('got it ');
+            arr.forEach(function(win){
+                win.show();
+            });
+        });
 
-            runningOffsetX = (i && !(i % COLUMNS)) ? 0 : runningOffsetX + OFFSET_X;
-            runningOffsetY += (i && !(i % COLUMNS)) ? OFFSET_Y : 0;
-
-            frag.appendChild(tmpLadder);
-        }
-
-        document.body.appendChild(frag);
+        // childWnds.forEach(function(win){
+        //     win.show(function(){
+        //         console.log('this that and the other');
+        //     });
+        // });
     });
+
+    function loadWinds(num, done, arr) {
+        arr = arr || []
+        if (num--) {
+            arr.push(
+            new fin.desktop.Window({
+                name: '' + Math.random(),
+                url: 'ladder.html',
+                autoShow: false
+            }, function () {
+                loadWinds(num, done, arr);
+            }));
+        }
+        else {
+            done(arr);
+        }
+    }
 
 
 /**
@@ -119,16 +146,16 @@ document.addEventListener('mousemove', function(e) {
  */
 
 fin.desktop.main(function() {
-    var win = fin.desktop.Window.getCurrent();
+    // var win = fin.desktop.Window.getCurrent();
 
-    fin.desktop.System.getMonitorInfo(function(monitorInfo) {
-        var mainWindow = fin.desktop.Window.getCurrent(),
-            rec = monitorInfo.primaryMonitor.availableRect;
+    // fin.desktop.System.getMonitorInfo(function(monitorInfo) {
+    //     var mainWindow = fin.desktop.Window.getCurrent(),
+    //         rec = monitorInfo.primaryMonitor.availableRect;
 
-        mainWindow.setBounds(rec.left, rec.top, rec.right - rec.left, rec.bottom - rec.top, function() {
-            mainWindow.show()
-        })
-    });
+    //     mainWindow.setBounds(rec.left, rec.top, rec.right - rec.left, rec.bottom - rec.top, function() {
+    //         mainWindow.show()
+    //     })
+    // });
 });
 
 
