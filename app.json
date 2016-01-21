@@ -3,8 +3,9 @@
     "startup_app": {
         "name": "OpenfinPOC",
         "description": "OpenFin POC",
+
         "url": "http://local:8080/ladder-app.html?n=0",
-        "__url": "http://cdn.openfin.co/demos/alpha-mask/",
+        "_url": "http://local:8080/onerealm.html",
         "uuid": "o",
         "autoShow": true,
 
@@ -13,12 +14,12 @@
             "red": 255,
             "green": 0,
             "blue": 255
-        },
-        "installerUrl": "https://dl.openfin.co/services/download?fileName=alpha-mask-poc&config=http://cdn.openfin.co/demos/alpha-mask/app.json"
+        }
     },
     "runtime": {
         "arguments": "--v=1 -disable-legacy-window  --security-realm=first",
         "__version": "4.40.3.19",
+        "_version": "stable",
         "version": "4.40.3.21"
     },
     "shortcut": {

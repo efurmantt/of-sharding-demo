@@ -9,11 +9,11 @@ fin.desktop.main(function() {
         wnds.forEach(function(win) {
             win.show();
         });
-        if (WNDS_CREATED + 20 <= TOTAL_WND - 20) {
+        if (WNDS_CREATED + 20 <= TOTAL_WND ) {
             fin.desktop.System
                 .launchExternalProcess(
                     RUNTIME_PATH, 
-                    '--rvm-config="http://local:8080/rvm.json"  --config="http://local:8080/app' + (WNDS_CREATED + 20) + '.json', 
+                    '  --config="http://local:8080/app' + (WNDS_CREATED + 20) + '.json', 
                     function(result) {
                         console.log('runtime spawned');
                     });
@@ -21,7 +21,6 @@ fin.desktop.main(function() {
     });
 
 });
-
 
 function loadWinds(num, done, arr) {
     arr = arr || []
