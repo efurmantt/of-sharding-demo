@@ -1,0 +1,10 @@
+<!doctype html>
+Shard 2
+<div id="messages"></div>
+<script>
+fin.desktop.main(function() {
+  fin.desktop.InterApplicationBus.subscribe('*', 'test', function(message) {
+    messages.innerHTML += message + '<br/>'
+  })
+})
+</script>
