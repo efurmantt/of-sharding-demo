@@ -3,7 +3,7 @@
     "startup_app": {
         "name": "OpenfinPOC",
         "description": "OpenFin POC",
-        "url": "http://local:8080/ladder-app.html?n=60",
+        "url": "http://localhost:8081/ladder-app.html?n=60",
         "__url": "http://cdn.openfin.co/demos/alpha-mask/",
         "uuid": "o",
         "autoShow": true,

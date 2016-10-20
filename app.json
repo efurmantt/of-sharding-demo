@@ -1,11 +1,9 @@
 {
     "devtools_port": 9090,
     "startup_app": {
-        "name": "OpenfinPOC",
-        "description": "OpenFin POC",
-
-        "url": "http://local:8080/ladder-app.html?n=0",
-        "_url": "http://local:8080/onerealm.html",
+        "name": "sharding-communication",
+        "description": "sharding-communication",
+        "url": "http://localhost:8081/ladder-app.html?n=0",
         "uuid": "o",
         "autoShow": true,
 

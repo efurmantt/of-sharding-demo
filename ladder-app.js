@@ -1,6 +1,6 @@
 var WNDS_PER_SHRD = 20,
     TOTAL_WND = 160,
-    RUNTIME_PATH = "C:\\Users\\openfin\\AppData\\Local\\OpenFin\\OpenFinRVM.exe",
+    RUNTIME_PATH = "%LocalAppData%\\OpenFin\\OpenFinRVM.exe",
     WNDS_CREATED = Number(location.search.split('=')[1]);
 
 fin.desktop.main(function() {
@@ -13,7 +13,7 @@ fin.desktop.main(function() {
             fin.desktop.System
                 .launchExternalProcess(
                     RUNTIME_PATH, 
-                    '  --config="http://local:8080/app' + (WNDS_CREATED + 20) + '.json', 
+                    '  --config="http://localhost:8081/app' + (WNDS_CREATED + 20) + '.json', 
                     function(result) {
                         console.log('runtime spawned');
                     });
