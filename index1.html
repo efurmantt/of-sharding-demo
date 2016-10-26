@@ -2,6 +2,7 @@
 Shard 1
 <button onclick="void publish()">Send</button>
 <input id="test" type="text" value="this is a test">
+<div id="messages"></div>
 <script>
 fin.desktop.main(function() {
   var options = {
@@ -13,6 +14,10 @@ fin.desktop.main(function() {
     options,
     console.log.bind(console, 'launchExternalProcess'),
     console.error.bind(console, 'launchExternalProcess'));
+
+  fin.desktop.InterApplicationBus.subscribe('*', 'test', function(message) {
+    messages.innerHTML += message + '<br/>'
+  })
 })
 
 function publish() {
