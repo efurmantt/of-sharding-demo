@@ -1,0 +1,29 @@
+<!doctype html>
+Hello
+<input id="outgoing" type="text" value="this is a test">
+<button onclick="void publish()">Publish</button>
+<button onclick="void launch()">Launch</button>
+<div id="received"></div>
+<script>
+var worker = new SharedWorker(location.origin + '/shared-worker.js')
+worker.port.onmessage = function(event) {
+  received.innerHTML += event.data + '<br/>'
+};
+
+function publish() {
+  worker.port.postMessage(outgoing.value);
+}
+
+function launch() {
+  var id = Math.random().toString()
+  var app = new fin.desktop.Application({
+    name: id,
+    uuid: id,
+    url: location.origin + '/index.html',
+    autoShow: true,
+    frame: true
+  }, function() {
+    app.run()
+  });
+}
+</script>
